@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+    <body>
+        <button onclick='equals()'>=</button>
+        <p id="output"></p>
+    </body>
+    <script>
+
+        function addButton(x) {
+            let text = `<button onclick="clicked('` + x + `')">` + x + `</button>`
+            console.log(text)
+            document.getElementsByTagName("body")[0].innerHTML += text
+        }
+
+        Array.from("+-/*()").forEach(item => {
+            addButton(item)
+        })
+
+        for(i=0; i<=9; i++) {
+            addButton(i)
+        }
+        function clicked(x) {
+            document.getElementById("output").innerHTML += x
+        }
+        function equals() {
+            let query = document.getElementById("output").innerHTML
+            console.log(query)
+            document.getElementById("output").innerHTML = eval(query)
+        }
+    </script>
+</html>
